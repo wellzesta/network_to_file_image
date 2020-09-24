@@ -417,6 +417,9 @@ class _MockHttpClientRequest extends HttpClientRequest {
   final HttpHeaders headers = _MockHttpHeaders();
 
   @override
+  void abort([Object exception, StackTrace stackTrace]) {}
+
+  @override
   void add(List<int> data) {}
 
   @override
@@ -474,9 +477,6 @@ class _MockHttpClientResponse implements HttpClientResponse {
   _MockHttpClientResponse(Uint8List bytes)
       : _delegate = Stream<Uint8List>.value(bytes),
         _contentLength = bytes.length;
-
-  @override
-  void abort([Object exception, StackTrace stackTrace]) {}
 
   @override
   final HttpHeaders headers = _MockHttpHeaders();
